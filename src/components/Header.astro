@@ -1,0 +1,85 @@
+---
+import ThemeSwitcher from './ThemeSwitcher.astro';
+import { siteConfig } from '../config';
+---
+
+<header class="header">
+  <div class="header-content">
+    <nav class="nav">
+      <a href="/" class="logo">{siteConfig.name}</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </nav>
+    <ThemeSwitcher />
+  </div>
+</header>
+
+<style>
+  .header {
+    width: 100%;
+    background: var(--surface-1);
+    border-bottom: 1px solid var(--surface-2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+
+  .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-1);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .nav-links a {
+    color: var(--text-2);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: var(--text-1);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      padding: 1rem;
+    }
+
+    .nav {
+      gap: 1rem;
+    }
+
+    .nav-links {
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+    }
+  }
+</style>

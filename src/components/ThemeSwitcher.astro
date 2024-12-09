@@ -1,0 +1,100 @@
+---
+---
+
+<div class="theme-switcher">
+  <input type="checkbox" id="theme-toggle" class="theme-input">
+  <label for="theme-toggle" class="theme-label">
+    <span class="moon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </span>
+    <span class="sun">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </span>
+  </label>
+</div>
+
+<style>
+  .theme-switcher {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .theme-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .theme-label {
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    background: var(--surface-2);
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 4rem;
+    position: relative;
+    border: 2px solid var(--text-1);
+    height: 2.5rem;
+  }
+
+  .theme-label::after {
+    content: "";
+    position: absolute;
+    left: 0.4rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--text-1);
+    border-radius: 50%;
+    transition: transform 0.3s;
+    z-index: 2;
+  }
+
+  .theme-input:checked + .theme-label::after {
+    transform: translateX(1.7rem);
+  }
+
+  .sun, .moon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    transition: opacity 0.3s;
+  }
+
+  .sun svg, .moon svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    color: var(--text-1);
+  }
+
+  .sun {
+    opacity: 1;
+  }
+
+  .moon {
+    opacity: 0.3;
+  }
+
+  .theme-input:checked ~ .theme-label .sun {
+    opacity: 0.3;
+  }
+
+  .theme-input:checked ~ .theme-label .moon {
+    opacity: 1;
+  }
+</style>

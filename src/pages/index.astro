@@ -1,11 +1,72 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Card from '../components/Card.astro';
+import CardCollection from '../components/CardCollection.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<Header />
+	<main class="content">
+		<h1>Welcome to WebTemplate</h1>
+		<p>Start building your website here.</p>
+
+		<CardCollection title="Featured Content">
+			<Card
+				href="#"
+				title="Feature One"
+				body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				image="/placeholder-1.jpg"
+			/>
+			<Card
+				href="#"
+				title="Feature Two"
+				body="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+				image="/placeholder-2.jpg"
+			/>
+			<Card
+				href="#"
+				title="Feature Three"
+				body="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+				image="/placeholder-3.jpg"
+			/>
+		</CardCollection>
+	</main>
+	<Footer />
 </Layout>
+
+<style>
+	.content {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 6rem 2rem 2rem;
+		min-height: calc(100vh - 400px); /* Ensures content fills space before footer */
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		color: var(--text-1);
+		margin-bottom: 1rem;
+	}
+
+	p {
+		color: var(--text-2);
+		font-size: 1.1rem;
+		line-height: 1.6;
+	}
+
+	@media (max-width: 768px) {
+		.content {
+			padding: 5rem 1rem 1rem;
+			min-height: calc(100vh - 300px);
+		}
+
+		h1 {
+			font-size: 2rem;
+		}
+	}
+</style>

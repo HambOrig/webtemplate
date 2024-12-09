@@ -1,0 +1,44 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section class="card-collection">
+  {title && <h2 class="collection-title">{title}</h2>}
+  <div class="card-grid">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .card-collection {
+    margin: 2rem 0;
+  }
+
+  .collection-title {
+    color: var(--text-1);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .collection-title {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+  }
+</style>
